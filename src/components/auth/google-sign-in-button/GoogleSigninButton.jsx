@@ -17,7 +17,7 @@ export default function GoogleSigninButton() {
         src="https://img.icons8.com/color/16/000000/google-logo.png"
         alt="Google"
       />
-      Sign In with Google
+      গুগল দিয়ে লগইন করুন
     </button>
   );
 }

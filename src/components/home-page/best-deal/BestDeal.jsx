@@ -32,10 +32,10 @@ const BestDeals = () => {
   return (
     <section className="px-3 my-12">
       <div className="flex items-center mb-6 justify-between">
-        <SectionTitle title="Top Selling Products" />
+        <SectionTitle title="গ্রাহকদের পছন্দের পণ্য" />
         <div className="text-[14px] font-bold">
           <Link href="/products">
-            <span className="text-sm md:text-[14px]">VIEW ALL</span>
+            <span className="text-sm md:text-[14px]">সব দেখুন</span>
             <i className="fa-solid fa-angle-right px-2 text-[8px] md:text-[12px] py-1.5 bg-black ml-2 text-white rounded-full"></i>
           </Link>
         </div>

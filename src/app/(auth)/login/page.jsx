@@ -41,15 +41,15 @@ export default function page() {
           <div class="w-full max-w-md mx-auto">
             <Logo className={"w-1/2 lg:w-1/2 mb-6"} />
 
-            <h2 class="text-3xl font-bold mb-1">Sign In</h2>
+            <h2 class="text-3xl font-bold mb-1">লগইন</h2>
             <p class="text-sm text-gray-500 mb-6">
-              See your growth and get consulting support!
+              আপনার অ্যাকাউন্টে লগইন করুন
             </p>
             <GoogleSigninButton />
 
             <div class="text-center text-gray-500 text-sm mb-6 relative">
               <span class="bg-[#f4f7f9] px-2 z-10 relative">
-                Sign in with Phone
+                মোবাইল দিয়ে লগইন করুন
               </span>
               <div class="absolute left-0 top-1/2 w-full h-px bg-gray-300 -z-0"></div>
             </div>
@@ -57,8 +57,8 @@ export default function page() {
             <form>
               <div class="mb-4 space-y-4">
                 <AuthTextInput
-                  label="Phone number"
-                  placeholder="Phone number"
+                  label="মোবাইল নম্বর"
+                  placeholder="মোবাইল নম্বর"
                   value={phone}
                   isNumber
                   setValue={(value) => {
@@ -69,8 +69,8 @@ export default function page() {
                   isRequired
                 />
                 <AuthTextInput
-                  label="Password"
-                  placeholder="Password"
+                  label="পাসওয়ার্ড"
+                  placeholder="পাসওয়ার্ড"
                   value={password}
                   setValue={setPassword}
                   isRequired
@@ -78,7 +78,7 @@ export default function page() {
                 />
               </div>
               <CheckBoxWithLabel
-                label="Remember me"
+                label="আমাকে মনে রাখবেন"
                 checked={remember}
                 setChecked={setRemember}
               />
@@ -88,21 +88,21 @@ export default function page() {
                 type="submit"
                 class="w-full py-3 bg-black text-white font-bold rounded-md text-sm"
               >
-                SIGN IN
+                লগইন করুন
               </button>
             </form>
 
             <div class="mt-6 text-sm">
               <p class="text-gray-600">
-                Forgot Password?
+                পাসওয়ার্ড ভুলে গেছেন? {" "}
                 <Link href="/reset-password" class="text-black font-medium">
-                  Click Here
+                  এখানে ক্লিক করুন
                 </Link>
               </p>
               <p class="text-gray-600 mt-1">
-                Don’t have an Account?
+                কোনো অ্যাকাউন্ট নেই? {" "}
                 <Link href="/signup" class="text-black font-medium">
-                  Sign Up
+                  নিবন্ধন করুন
                 </Link>
               </p>
             </div>
@@ -117,11 +117,10 @@ export default function page() {
           />
           <div class="max-w-md">
             <h2 class="font-bold text-3xl lg:text-4xl mb-4">
-              Turn your ideas into reality..
+              আপনার অ্যাকাউন্টে লগইন করুন
             </h2>
             <p class="text-sm font-medium text-gray-600">
-              Consistent quality and experience across all platforms and
-              devices..
+              আপনার অ্যাকাউন্টে প্রবেশ করুন এবং অর্ডার করুন
             </p>
           </div>
         </div>

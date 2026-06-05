@@ -7,7 +7,7 @@ export default function Category({ data }) {
   return (
     <div className="pt-6 mt-10 px-2 lg:px-4">
       <SectionTitle
-        title={"Popular Categories"}
+        title={"জনপ্ৰিয় ক্যাটাগরি"}
         className={"mb-6 text-center"}
       />
       <CustomSlider

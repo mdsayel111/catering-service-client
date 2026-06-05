@@ -100,7 +100,7 @@ export default function FilterNavbar() {
                       d="M4 6h16M4 12h16M4 18h16"
                     />
                   </svg>
-                  All Categories
+                  ক্যাটাগরি
                   <svg
                     className="w-4 h-6 ml-14"
                     fill="none"
@@ -162,7 +162,7 @@ export default function FilterNavbar() {
                   onChange={(e) => setSearch(e.target.value)}
                   value={search}
                   type="text"
-                  placeholder="Search your item"
+                  placeholder="খাবার সার্চ করুন"
                   className="ml-3 w-full bg-transparent outline-none text-text-primaryColor placeholder-text-primary-color"
                 />
               </div>

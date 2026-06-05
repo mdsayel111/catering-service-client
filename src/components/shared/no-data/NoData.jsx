@@ -17,8 +17,11 @@ export default function NotData({ text, containerClassName }) {
         height={300}
       />
       <p className="text-center text-2xl text-gray-900 font-medium p-4">
-        No {text} found
+        কোনো ফলাফল পাওয়া যায়নি
       </p>
+      {/* <p className="text-center text-2xl text-gray-900 font-medium p-4">
+        No {text} found
+      </p> */}
     </div>
   );
 }

@@ -70,20 +70,20 @@ function Products({ products: productsFromApi, categories }) {
         <div className="border p-4">
           <div className="flex justify-between items-center border-b">
             <h2 className="text-base font-bold text-[#1a1a1a]">
-              Filter Products
+              ফিল্টার করুন
             </h2>
             <div className="p-4 space-y-6 text-sm text-gray-700"></div>
           </div>
           <div className="lg:p-0 px-2">
             {/* Header */}
             <div className="">
-              <h2 className="font-semibold text-base my-2">Price</h2>
+              <h2 className="font-semibold text-base my-2">মূল্য</h2>
               <RangeInput onChange={setPriceRange} />
             </div>
           </div>
           <div className="mt-4 ">
             <h3 className="mb-2 font-semibold text-text-primary-color">
-              Categories
+              ক্যাটেগরি
             </h3>
             <div className="space-y-2 max-h-[30vh] overflow-y-auto">
               {categoriesOptions.map((item, index) => (
@@ -119,11 +119,11 @@ function Products({ products: productsFromApi, categories }) {
                 )}
               >
                 <h2 className="text-base font-bold text-[#1a1a1a] border-b border-black pb-2 mb-2">
-                  Filter Products
+                  ফিল্টার করুন
                 </h2>
                 <div>
                   <h4 className="font-semibold border-b pb-2 mb-2">
-                    Filter by Price
+                    দামের ভিত্তিতে ফিল্টার করুন
                   </h4>
                   <RangeInput
                     onChange={setPriceRange}

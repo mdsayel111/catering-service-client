@@ -151,7 +151,7 @@ export default function RangeInput({ onChange, min = 0, max = 5000 }) {
 
       {/* Price display */}
       <p className="text-xs mt-2 text-gray-600">
-        Price:{" "}
+        মূল্য:{" "}
         <span className="font-semibold">
           {minVal} - {maxVal}
         </span>

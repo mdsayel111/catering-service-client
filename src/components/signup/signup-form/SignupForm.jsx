@@ -12,18 +12,18 @@ export default function SignupForm({ data, setData, handleSubmit }) {
       <div className="max-w-[1500px] mx-auto grid grid-cols-1 lg:grid-cols-5 min-h-screen justify-start p-6 lg:p-10">
         <div className="lg:col-span-2 flex items-center">
           <div className="w-full max-w-md mx-auto">
-            <Logo className={"w-1/2 lg:w-1/2 mb-6 mx-auto"} />
+            <Logo className={"w-1/2 lg:w-1/2 mb-6"} />
 
-            <h2 className="text-3xl font-bold mb-1">Sign Up</h2>
+            <h2 className="text-3xl font-bold mb-1">নিবন্ধন করুন</h2>
             <p className="text-sm text-gray-500 mb-6">
-              See your growth and get consulting support!
+              নতুন অ্যাকাউন্ট তৈরি করুন
             </p>
 
             <GoogleSigninButton />
 
             <div className="text-center text-gray-500 text-sm mb-6 relative">
               <span className="bg-[#f4f7f9] px-2 z-10 relative">
-                Sign up with Phone
+                মোবাইল দিয়ে নিবন্ধন করুন
               </span>
               <div className="absolute left-0 top-1/2 w-full h-px bg-gray-300 -z-0"></div>
             </div>
@@ -31,22 +31,22 @@ export default function SignupForm({ data, setData, handleSubmit }) {
             <form>
               <div className="space-y-4 mb-4">
                 <AuthTextInput
-                  label="First Name"
-                  placeholder="First Name"
+                  label="নাম (প্রথম নাম)"
+                  placeholder="নাম (প্রথম নাম)"
                   value={data.firstName}
                   setValue={(value) => setData({ ...data, firstName: value })}
                   isRequired
                 />
                 <AuthTextInput
-                  label="Last Name"
-                  placeholder="Last Name"
+                  label="শেষ নাম"
+                  placeholder="শেষ নাম"
                   value={data.lastName}
                   setValue={(value) => setData({ ...data, lastName: value })}
                   isRequired
                 />
                 <AuthTextInput
-                  label="Phone number"
-                  placeholder="Phone number"
+                  label="মোবাইল নম্বর"
+                  placeholder="মোবাইল নম্বর"
                   value={data.phone}
                   isNumber
                   setValue={(value) => {
@@ -57,8 +57,8 @@ export default function SignupForm({ data, setData, handleSubmit }) {
                   isRequired
                 />
                 <AuthTextInput
-                  label="Password"
-                  placeholder="Password"
+                  label="পাসওয়ার্ড"
+                  placeholder="পাসওয়ার্ড"
                   type="password"
                   value={data?.password}
                   setValue={(value) => setData({ ...data, password: value })}
@@ -66,8 +66,8 @@ export default function SignupForm({ data, setData, handleSubmit }) {
                 />
                 <AuthTextInput
                   type="password"
-                  label="Confirm password"
-                  placeholder="Confirm password"
+                  label="পাসওয়ার্ড নিশ্চিত করুন"
+                  placeholder="পাসওয়ার্ড নিশ্চিত করুন"
                   value={data?.confirmPassword}
                   setValue={(value) =>
                     setData({ ...data, confirmPassword: value })
@@ -76,16 +76,23 @@ export default function SignupForm({ data, setData, handleSubmit }) {
                 />
               </div>
               <CheckBoxWithLabel
-                label="By signing up, you agree to <a className=text-blue-500 href=''>Teams of Service</a> and <a className=text-blue-500 href=''>Privacy Policy</a>"
+                // label="By signing up, you agree to <a className=text-blue-500 href=''>Teams of Service</a> and <a className=text-blue-500 href=''>Privacy Policy</a>"
+                label={`সাইন আপ করার মাধ্যমে, আপনি আমাদের 
+  <a style="color:#3B82F6" href="">
+    সেবার শর্তাবলী
+  </a> এবং
+  <a style="color:#3B82F6" href="">
+    গোপনীয়তা নীতি
+  </a> সাথে সম্মত হচ্ছেন।`}
                 checked={data.checked}
                 setChecked={(value) => setData({ ...data, checked: value })}
               />
-              <Button handleSubmit={handleSubmit} text="SIGN UP" />
+              <Button handleSubmit={handleSubmit} text="নিবন্ধন করুন" />
             </form>
             <p className="text-gray-600 mt-6 text-sm">
-              Already have an Account?
+              ইতিমধ্যে অ্যাকাউন্ট আছে? {" "}
               <Link href="/login" className="text-black font-medium">
-                Sign In
+                লগইন করুন
               </Link>
             </p>
           </div>
@@ -99,11 +106,10 @@ export default function SignupForm({ data, setData, handleSubmit }) {
           />
           <div className="max-w-md">
             <h2 className="font-bold text-3xl lg:text-4xl mb-4">
-              Turn your ideas into reality..
+              নতুন অ্যাকাউন্ট খুলুন
             </h2>
             <p className="text-sm font-medium text-gray-600">
-              Consistent quality and experience across all platforms and
-              devices..
+              নতুন এক্সপেরিয়েন্সের জন্য রেজিস্টার করুন
             </p>
           </div>
         </div>
