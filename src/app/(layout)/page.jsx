@@ -9,7 +9,7 @@ export default async function Home() {
   const data = await fetchData("/client/home-page", { cache: "no-store" });
   const homePageData = data?.data || {};
   return (
-    <div className="">
+    <div className="mb-12">
       <Banner data={homePageData?.banners} />
       <Container className={"px-0 lg:px-0"}>
         <Category data={homePageData?.categories} />

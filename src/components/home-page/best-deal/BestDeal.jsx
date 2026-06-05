@@ -29,8 +29,12 @@ const BestDeals = () => {
     return () => window.removeEventListener("resize", updateItems);
   }, []);
 
+  if(products?.length === 0){
+    return null;
+  }
+
   return (
-    <section className="px-3 my-12">
+    <section className="px-3">
       <div className="flex items-center mb-6 justify-between">
         <SectionTitle title="গ্রাহকদের পছন্দের পণ্য" />
         <div className="text-[14px] font-bold">
