@@ -1,0 +1,7 @@
+.leaflet-container {
+  cursor: pointer;
+}
+
+.leaflet-container.leaflet-grab {
+  cursor: pointer; /* override Leaflet's grab cursor */
+}

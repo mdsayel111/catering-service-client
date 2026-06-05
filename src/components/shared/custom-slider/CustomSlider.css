@@ -1,0 +1,34 @@
+/* .slick-slide:focus {
+  outline: none !important;
+}
+
+.slick-slide {
+  display: inline-block; 
+}
+
+.slick-list {
+  overflow: hidden;
+} */
+
+
+
+.swiper {
+  width: 100%;
+  height: fit-content;
+  /* height: 100%; */
+}
+
+.swiper-slide {
+  font-size: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.swiper-wrapper {
+  height: 100% !important;
+}
+
+.swiper.swiper-initialized.swiper-horizontal.mySwiper {
+  height: 100%;
+}
