@@ -29,7 +29,7 @@ export default function AccountNavigationItems() {
         type={"button"}
         onClick={() => {
           dispatch(logout());
-          toast.success("Logged out successfully");
+          toast.success("লগ-আউট করা হয়েছে");
           router.push("/");
         }}
       />

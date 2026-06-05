@@ -32,7 +32,7 @@ export default function TopNavbar() {
 
   const handleLogout = () => {
     dispatch(logout());
-    toast.success("Logged out successfully");
+    toast.success("লগ-আউট করা হয়েছে");
     router.push("/");
     setShowMenu(false);
   };

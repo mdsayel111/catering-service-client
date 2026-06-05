@@ -32,7 +32,7 @@ export default function page() {
 
   const handleOrderNow = async () => {
     if (!fullName || !phone || !deliveryAddress?.address)
-      return toast.error("Please fill all the fields");
+      return toast.error("দয়া করে সব তথ্য পূরণ করুন");
     try {
       await axios.post("/order", {
         products: finalCartItems?.map((item) => ({
@@ -45,11 +45,11 @@ export default function page() {
           phone: phone,
         },
       });
-      toast.success("Order placed successfully");
+      toast.success("অর্ডার সফলভাবে সম্পন্ন হয়েছে");
       dispatch(removeAllCartItems());
       user?.phone ? router.push("/my-order") : router.push("/");
     } catch (error) {
-      toast.error(error?.response?.data?.message || "Something went wrong");
+      toast.error(error?.response?.data?.message || "দুঃখিত, কিছু সমস্যা হয়েছে");
     }
   };
 

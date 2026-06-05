@@ -19,7 +19,7 @@ export default function AddressTab() {
       axios
         .put("/customer/address", location)
         .then((response) => {
-          toast.success("Address updated successfully");
+          toast.success("ঠিকানা সফলভাবে আপডেট হয়েছে");
         })
         .catch((error) => {
           toast.error(error.response.data.message);
@@ -28,7 +28,7 @@ export default function AddressTab() {
       axios
         .post("/customer/address", location)
         .then((response) => {
-          toast.success("Address added successfully");
+          toast.success("ঠিকানা সফলভাবে যোগ করা হয়েছে");
         })
         .catch((error) => {
           toast.error(error.response.data.message);

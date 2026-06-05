@@ -28,11 +28,11 @@ function NumberVerification() {
       const res = await axios.post(resendOtp, {
         phone: data?.phone,
       });
-      toast.success("OTP Sent To Your Phone");
+      toast.success("আপনার ফোনে OTP পাঠানো হয়েছে");
       setOtp(new Array(6).fill(""));
       setTimer(60);
     } catch (error) {
-      toast.error(error?.response?.data?.message || "Something went wrong");
+      toast.error(error?.response?.data?.message || "দুঃখিত, কিছু সমস্যা হয়েছে");
     }
   };
 
@@ -40,16 +40,16 @@ function NumberVerification() {
     const bdPhoneRegex = /^01[3-9]\d{8}$/;
 
     if (!bdPhoneRegex.test(data?.phone?.trim())) {
-      toast.error("Invalid phone number.");
+      toast.error("সঠিক ফোন নম্বর দিন");
       return;
     }
 
     try {
       await requestOtp();
       setCurrentStep("otp");
-      toast.success("OTP Sent To Your Mobile Number");
+      toast.success("আপনার ফোনে OTP পাঠানো হয়েছে");
     } catch (error) {
-      toast.error(error?.response?.data?.message || "Something went wrong");
+      toast.error(error?.response?.data?.message || "দুঃখিত, কিছু সমস্যা হয়েছে");
     }
   };
 
@@ -65,15 +65,15 @@ function NumberVerification() {
         otp: otp.join(""),
       });
       if (res.data?.success) {
-        toast.success("OTP Verified Successfully");
+        toast.success("OTP সফলভাবে যাচাই হয়েছে");
         dispatch(setToken(res?.data?.token));
         dispatch(setUser(res?.data?.user));
         router.replace("/");
       } else {
-        toast.error("OTP Verification Failed");
+        toast.error("OTP যাচাই ব্যর্থ হয়েছে");
       }
     } catch (err) {
-      toast.error(err?.response?.data?.message || "Something went wrong");
+      toast.error(err?.response?.data?.message || "দুঃখিত, কিছু সমস্যা হয়েছে");
     } finally {
     }
   };

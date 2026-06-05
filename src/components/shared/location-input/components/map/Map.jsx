@@ -53,7 +53,7 @@ function ClickHandler({ setSelectedPosition, onSelect }) {
         setSelectedPosition([lat, lng]); // internal state for marker
         if (onSelect) onSelect(lat, lng); // notify parent
       } else {
-        toast.error("Selected location is outside the service zone.");
+        toast.error("নির্বাচিত স্থানটি আমাদের সার্ভিস এলাকার বাইরে");
       }
     },
   });

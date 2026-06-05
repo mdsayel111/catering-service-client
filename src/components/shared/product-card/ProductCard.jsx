@@ -20,7 +20,7 @@ export default function ProductCard({ item, loading }) {
   const router = useRouter();
   const handleAddToCart = () => {
     dispatch(addToCart({ id: item._id, quantity: 1 }));
-    toast.success("Product Added to Cart");
+    toast.success("খাবার কার্টে যোগ করা হয়েছে");
     setIsDetailsOpen(false);
   };
 
@@ -87,10 +87,10 @@ export default function ProductCard({ item, loading }) {
                     e.stopPropagation();
                     if (!wishlists?.find((wishId) => wishId === item._id)) {
                       dispatch(addToWishlist(item._id));
-                      toast.success("Added to Wishlist");
+                      toast.success("পছন্দের তালিকায় যোগ করা হয়েছে");
                     } else {
                       dispatch(removeFromWishlist(item._id));
-                      toast.success("Removed from Wishlist");
+                      toast.success("পছন্দের তালিকা থেকে সরানো হয়েছে");
                     }
                   }}
                 >

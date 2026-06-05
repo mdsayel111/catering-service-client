@@ -15,7 +15,7 @@ const FeedbackForm = () => {
     const res = await axios.post("/testimonial", {
       text: feedback,
     });
-    toast.success("Thank you for your feedback!");
+    toast.success("আপনার মতামতের জন্য ধন্যবাদ");
     setFeedback("");
   };
   // Show the form

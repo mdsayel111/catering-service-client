@@ -21,10 +21,10 @@ function ResetPassword() {
   const sendOtp = async () => {
     try {
       const res = await axios.post(getOtp, { phone, type: "reset-password" });
-      toast.success("OTP Sent To Your Phone");
+      toast.success("আপনার ফোনে OTP পাঠানো হয়েছে");
       setCurrentStep("otp");
     } catch (error) {
-      toast.error(error?.response?.data?.message || "Something went wrong");
+      toast.error(error?.response?.data?.message || "দুঃখিত, কিছু সমস্যা হয়েছে");
     }
   };
 
@@ -33,11 +33,11 @@ function ResetPassword() {
       await axios.post(resendOtp, {
         phone,
       });
-      toast.success("OTP Sent To Your Phone");
+      toast.success("আপনার ফোনে OTP পাঠানো হয়েছে");
       setOtp(new Array(6).fill(""));
       setTimer(60);
     } catch (error) {
-      toast.error(error?.response?.data?.message || "Something went wrong");
+      toast.error(error?.response?.data?.message || "দুঃখিত, কিছু সমস্যা হয়েছে");
     }
   };
 
@@ -50,12 +50,12 @@ function ResetPassword() {
         otp: otp.join(""),
         type: "reset-password",
       });
-      toast.success("OTP Verified Successfully");
+      toast.success("OTP সফলভাবে যাচাই হয়েছে");
       setOtp(new Array(6).fill(""));
       setTimer(60);
       router.replace(res?.data?.data?.redirectUrl || "/");
     } catch (error) {
-      toast.error(error?.response?.data?.message || "Something went wrong");
+      toast.error(error?.response?.data?.message || "দুঃখিত, কিছু সমস্যা হয়েছে");
     }
   };
 
@@ -66,12 +66,12 @@ function ResetPassword() {
         password: password,
         token: token,
       });
-      toast.success("Password Reset Successfully");
+      toast.success("পাসওয়ার্ড সফলভাবে রিসেট হয়েছে");
       setOtp(new Array(6).fill(""));
       setTimer(60);
       router.replace("/login");
     } catch (error) {
-      toast.error(error?.response?.data?.message || "Something went wrong");
+      toast.error(error?.response?.data?.message || "দুঃখিত, কিছু সমস্যা হয়েছে");
     }
   };
   return (

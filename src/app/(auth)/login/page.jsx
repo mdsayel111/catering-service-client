@@ -30,7 +30,7 @@ export default function page() {
       toast.error(
         typeof err?.response?.data?.error === "string"
           ? err?.response?.data?.error
-          : "Something went wrong"
+          : "দুঃখিত, কিছু সমস্যা হয়েছে"
       );
     }
   };

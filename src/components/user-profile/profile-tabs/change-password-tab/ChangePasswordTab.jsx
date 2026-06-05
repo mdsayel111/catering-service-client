@@ -14,7 +14,7 @@ export default function ChangePasswordTab() {
     e.preventDefault();
     try {
       if (newPassword !== confirmPassword) {
-        toast.error("Passwords do not match");
+        toast.error("পাসওয়ার্ড দুটি মিলেনি");
         return;
       }
       await axios.put("/customer/update-password", {
@@ -23,9 +23,9 @@ export default function ChangePasswordTab() {
       });
       setOldPassword("");
       setNewPassword("");
-      toast.success("Password updated successfully");
+      toast.success("পাসওয়ার্ড সফলভাবে আপডেট হয়েছে");
     } catch (error) {
-      toast.error("Something went wrong");
+      toast.error("দুঃখিত, কিছু সমস্যা হয়েছে");
     }
   };
   return (

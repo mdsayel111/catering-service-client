@@ -12,7 +12,7 @@ export default function ProfileDropdown({ image }) {
   const router = useRouter();
   const handleLogOut = async () => {
     await dispatch(logout());
-    toast.success("Logged out successfully");
+    toast.success("লগ-আউট করা হয়েছে");
     router.push("/");
   };
   return (

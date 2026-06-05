@@ -39,7 +39,7 @@ export default function LocationInput({
         ({ coords }) => {
           if (!isPointInZone(coords.latitude, coords.longitude)) {
             toast.error(
-              "Sorry, your current location is outside our delivery zone."
+              "দুঃখিত, আপনার এলাকা আমাদের ডেলিভারি এলাকার বাইরে"
             );
             return;
           }
@@ -96,14 +96,14 @@ export default function LocationInput({
       setSelectedPosition([lat, lon]);
       setAddress(place.display_name);
     } else {
-      toast.error("Selected location is outside the service zone.");
+      toast.error("নির্বাচিত স্থানটি আমাদের সার্ভিস এলাকার বাইরে");
     }
   };
 
   const updateLocation = (lat, lon) => {
     const newCenter = [lat, lon];
     if (!isPointInZone(lat, lon)) {
-      toast.error("Selected location is outside the delivery zone.");
+      toast.error("নির্বাচিত স্থানটি ডেলিভারি এলাকার বাইরে");
       setQuery("");
       return;
     }

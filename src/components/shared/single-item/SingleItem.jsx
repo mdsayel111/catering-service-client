@@ -29,7 +29,7 @@ export default function SingleItem() {
     e.stopPropagation();
     dispatch(addToCart({ id: product._id, quantity: quantity }));
     setQuantity(1);
-    toast.success("Product Added to Cart");
+    toast.success("খাবার কার্টে যোগ করা হয়েছে");
   };
 
   useEffect(() => {

@@ -40,15 +40,15 @@ export default function Signup() {
         otp: otp.join(""),
       });
       if (res.data?.success) {
-        toast.success("OTP Verified Successfully");
+        toast.success("OTP সফলভাবে যাচাই হয়েছে");
         dispatch(setToken(res?.data?.token));
         dispatch(setUser(res?.data?.user));
         router.push("/");
       } else {
-        toast.error("OTP Verification Failed");
+        toast.error("OTP যাচাই ব্যর্থ হয়েছে");
       }
     } catch (err) {
-      toast.error(err?.response?.data?.message || "Something went wrong");
+      toast.error(err?.response?.data?.message || "দুঃখিত, কিছু সমস্যা হয়েছে");
     } finally {
     }
   };
@@ -65,13 +65,13 @@ export default function Signup() {
       data?.confirmPassword === "" ||
       !data?.checked
     ) {
-      toast.error("Please fill all the fields");
+      toast.error("দয়া করে সব তথ্য পূরণ করুন");
       return;
     }
 
     // Password match check
     if (data?.password !== data?.confirmPassword) {
-      toast.error("Passwords do not match");
+      toast.error("পাসওয়ার্ড দুটি মিলেনি");
       return;
     }
 
@@ -79,7 +79,7 @@ export default function Signup() {
       await handleNumberVerification();
       setCurrentStep("otp");
     } catch (error) {
-      toast.error(error?.response?.data?.message || "Something went wrong");
+      toast.error(error?.response?.data?.message || "দুঃখিত, কিছু সমস্যা হয়েছে");
     }
   };
 
@@ -88,11 +88,11 @@ export default function Signup() {
       const res = await axios.post(resendOtp, {
         phone: data?.phone,
       });
-      toast.success("OTP Sent To Your Phone");
+      toast.success("আপনার মোবাইলে OTP পাঠানো হয়েছে");
       setOtp(new Array(6).fill(""));
       setTimer(60);
     } catch (error) {
-      toast.error(error?.response?.data?.message || "Something went wrong");
+      toast.error(error?.response?.data?.message || "দুঃখিত, কিছু সমস্যা হয়েছে");
     }
   };
 
@@ -100,14 +100,14 @@ export default function Signup() {
     const bdPhoneRegex = /^01[3-9]\d{8}$/;
 
     if (!bdPhoneRegex.test(data?.phone?.trim())) {
-      toast.error("Invalid phone number.");
+      toast.error("সঠিক ফোন নম্বর দিন");
       return;
     }
 
     try {
       await requestOtp();
       setCurrentStep("otp");
-      toast.success("OTP Sent To Your Mobile Number");
+      toast.success("আপনার ফোনে OTP পাঠানো হয়েছে");
     } catch (error) {
       throw error;
     }

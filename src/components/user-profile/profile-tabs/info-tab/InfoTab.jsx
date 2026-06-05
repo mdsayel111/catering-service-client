@@ -28,7 +28,7 @@ export default function InfoTab({ data }) {
     axios,
     "/customer/update-profile",
     () => {
-      toast.success("Profile updated successfully");
+      toast.success("প্রোফাইল সফলভাবে আপডেট হয়েছে");
     },
     "PATCH",
     ["user-info"]
@@ -72,7 +72,7 @@ export default function InfoTab({ data }) {
       dispatch(setUser(res?.data?.data));
       // toast.success("Successfully updated profile");
     } catch (error) {
-      toast.error("Something went wrong");
+      toast.error("দুঃখিত, কিছু সমস্যা হয়েছে");
     }
   };
   return (
