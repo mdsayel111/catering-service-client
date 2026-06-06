@@ -25,7 +25,7 @@ export default function AccountNavigationItems() {
         }}
       />
       <SideBarItem
-        item={{ label: "Logout", icon: FaArrowRightFromBracket }}
+        item={{ label: "লগ-আউট", icon: FaArrowRightFromBracket }}
         type={"button"}
         onClick={() => {
           dispatch(logout());

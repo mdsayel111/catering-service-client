@@ -32,22 +32,22 @@ export default function ChangePasswordTab() {
     <div className="w-full rounded-sm">
       <div className="space-y-6">
         <TextInput
-          label="Current Password"
-          placeholder="Current Password"
+          label="বর্তমান পাসওয়ার্ড"
+          placeholder="বর্তমান পাসওয়ার্ড"
           value={oldPassword}
           setValue={setOldPassword}
           type="password"
         />
         <TextInput
-          label="New Password"
-          placeholder="New Password"
+          label="নতুন পাসওয়ার্ড"
+          placeholder="নতুন পাসওয়ার্ড"
           value={newPassword}
           setValue={setNewPassword}
           type="password"
         />
         <TextInput
-          label="Confirm Password"
-          placeholder="Confirm Password"
+          label="পাসওয়ার্ড নিশ্চিত করুন"
+          placeholder="পাসওয়ার্ড নিশ্চিত করুন"
           value={confirmPassword}
           setValue={setConfirmPassword}
           type="password"
@@ -55,7 +55,7 @@ export default function ChangePasswordTab() {
       </div>
 
       <div className="mt-4 lg:mt-6 text-center">
-        <SubmitButton handleSubmit={handleSubmit} label="Save Password" />
+        <SubmitButton handleSubmit={handleSubmit} label="পাসওয়ার্ড পরিবর্তন করুন" />
       </div>
     </div>
   );

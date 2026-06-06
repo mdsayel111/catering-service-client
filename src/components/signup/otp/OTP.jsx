@@ -53,10 +53,10 @@ export default function OTP({
               <IoIosArrowBack className="text-xl text-white" />
             </button>
             <h1 className="text-2xl font-bold text-gray-800 mb-2">
-              OTP Verification
+              OTP যাচাইকরণ
             </h1>
             <p className="text-gray-600 mb-6">
-              Please enter the 6-digit code sent to {phone}.
+              অনুগ্রহ করে নিম্নলিখিত নম্বরে পাঠানো ৬ সংখ্যার OTP কোডটি লিখুন {phone}.
             </p>
           </div>
 
@@ -77,22 +77,22 @@ export default function OTP({
               ))}
             </div>
 
-            <Button handleSubmit={handleSubmit} text="Verify" containerClassName={""} />
+            <Button handleSubmit={handleSubmit} text="যাচাই করুন" containerClassName={""} />
           </form>
 
           <div className="mt-6 text-sm">
             <p className="text-gray-600">
-              Didn’t receive the code?{" "}
+              কোডটি কি পাননি? {" "}
               {timer > 0 ? (
                 <span className="text-gray-400 font-semibold">
-                  Resend in {timer}s
+                  পুনরায় পাঠান {timer}সেকেন্ড
                 </span>
               ) : (
                 <button
                   onClick={handleResend}
                   className="text-blue-600 hover:underline font-semibold"
                 >
-                  Resend
+                  পুনরায় পাঠান
                 </button>
               )}
             </p>

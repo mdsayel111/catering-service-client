@@ -60,11 +60,10 @@ export default function AddressTab() {
           <LocationInput
             selectedLocation={location}
             handleAddLocation={(data) => setLocation(data)}
-            btnText={needUpdate ? "Update Address" : "Add Address"}
           />
           <SubmitButton
             handleSubmit={() => handleSubmit(location)}
-            label={needUpdate ? "Update Address" : "Add Address"}
+            label={needUpdate ? "ঠিকানা আপডেট করুন" : "ঠিকানা যোগ করুন"}
             className={"mx-auto block"}
           />
         </div>

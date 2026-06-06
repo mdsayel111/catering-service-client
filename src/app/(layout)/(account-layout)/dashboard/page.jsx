@@ -25,21 +25,22 @@ export default function page() {
     <div className="grid grid-cols-3 lg:grid-cols-4 gap-4 max-sm:gap-2 text-center">
       <StatsCard
         stats={{
-          title: "Total Orders",
+          // title: "Total Orders",
+          title: "মোট অর্ডারসমূহ",
           value: stats.totalOrders || 0,
           icon: FaStar,
         }}
       />
       <StatsCard
         stats={{
-          title: "Product in Cart",
+          title: "কার্টে থাকা খাবার",
           value: cartItems.length,
           icon: FaShoppingCart,
         }}
       />
       <StatsCard
         stats={{
-          title: "My Wishlist",
+          title: "পছন্দের তালিকা",
           value: cartItems.length,
           icon: FaHeart,
         }}

@@ -18,15 +18,15 @@ export default function page() {
   const tabs = [
     {
       name: "info",
-      label: "Basic Info",
+      label: "প্রাথমিক তথ্য",
     },
     {
       name: "address",
-      label: "Address",
+      label: "ঠিকানা",
     },
   ];
 
-  !user?.googleId ? tabs.push({ name: "change-password", label: "Change Password" }) : null;
+  !user?.googleId ? tabs.push({ name: "change-password", label: "পাসওয়ার্ড পরিবর্তন" }) : null;
 
   const handleTabClick = (tab) => {
     setActiveTab(tab);

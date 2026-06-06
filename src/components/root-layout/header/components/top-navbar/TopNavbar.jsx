@@ -103,7 +103,7 @@ export default function TopNavbar() {
                     className="hover:text-secondary-color transition text-text-primary-color duration-200 group flex items-center gap-2"
                   >
                     <i className="fa-solid fa-user text-secondary-color" />{" "}
-                    <span className="group-hover:text-secondary">LOGIN</span>
+                    <span className="group-hover:text-secondary">লগইন</span>
                   </Link>
                   <span className="mx-1 text-text-primary-color">/</span>
                   <Link
@@ -111,13 +111,13 @@ export default function TopNavbar() {
                     href="/signup"
                     className="hover:text-secondary-color text-text-primary-color transition duration-200"
                   >
-                    REGISTER
+                    নিবন্ধন
                   </Link>
                 </div>
               )}
               <span className="absolute bottom-4 left-0 w-full">
                 {user?.phone && (
-                  <Button text={"Logout"} handleSubmit={handleLogout} />
+                  <Button text={"লগ-আউট"} handleSubmit={handleLogout} />
                 )}
               </span>
             </ul>

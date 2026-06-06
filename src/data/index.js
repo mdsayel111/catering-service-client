@@ -49,29 +49,29 @@ export const navItems = [
   //   text: "Blog",
   // },
   {
-    text: "প্রোফাইল",
+    text: "অ্যাকাউন্ট",
     containerClassName: "lg:hidden",
     auth: true,
     subMenu: [
       {
         path: "/dashboard",
-        text: "Dashboard",
+        text: "ড্যাশবোর্ড",
       },
-      {
-        path: "/purchase-history",
-        text: "Purchase History",
-      },
+      // {
+      //   path: "/purchase-history",
+      //   text: "অর্ডার ইতিহাস",
+      // },
       {
         path: "/my-wishlist",
-        text: "My Wishlist",
+        text: "পছন্দের তালিকা",
       },
       {
         path: "/my-order",
-        text: "My Order",
+        text: "অর্ডারসমূহ",
       },
       {
         path: "/user-profile",
-        text: "My Account",
+        text: "প্রোফাইল",
       },
     ],
   },
@@ -362,27 +362,27 @@ export const wishlist = [
 export const accountSideBarItems = [
   {
     path: "/dashboard",
-    label: "Dashboard",
+    label: "ড্যাশবোর্ড",
     icon: FaTableColumns,
   },
   // {
   //   path: "/purchase-history",
-  //   label: "Purchase History",
+  //   label: "অর্ডার ইতিহাস",
   //   icon: FaTableColumns,
   // },
   {
     path: "/my-wishlist",
-    label: "My Wishlist",
+    label: "পছন্দের তালিকা",
     icon: FaHeart,
   },
   {
     path: "/my-order",
-    label: "My Order",
+    label: "অর্ডারসমূহ",
     icon: FaStar,
   },
   {
     path: "/user-profile",
-    label: "My Account",
+    label: "প্রোফাইল",
     icon: FaCircleUser,
   },
 ];

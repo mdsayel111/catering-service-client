@@ -26,6 +26,7 @@ export default function page() {
       dispatch(setToken(res?.data?.data?.token));
       dispatch(setUser(res?.data?.data?.user));
       router.push("/");
+      toast.success("লগ-ইন করা হয়েছে");
     } catch (err) {
       toast.error(
         typeof err?.response?.data?.error === "string"

@@ -83,20 +83,20 @@ export default function InfoTab({ data }) {
           <ImageInput
             image={image}
             setImage={setImage}
-            placeholder="Upload profile image"
+            placeholder="প্রোফাইল ছবি আপলোড করুন"
             containerClassName={"aspect-square"}
           />
         </div>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
           <TextInput
-            label="First Name"
-            placeholder="First Name"
+            label="নাম (প্রথম নাম)"
+            placeholder="নাম (প্রথম নাম)"
             value={firstName}
             setValue={setFirstName}
           />
           <TextInput
-            label="Last Name"
-            placeholder="Last Name"
+            label="শেষ নাম"
+            placeholder="শেষ নাম"
             value={lastName}
             setValue={setLastName}
           />
@@ -104,8 +104,8 @@ export default function InfoTab({ data }) {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
           <TextInput
             disabled={user?.googleId}
-            label="Email Address"
-            placeholder="email"
+            label="ইমেইল"
+            placeholder="ইমেইল"
             value={email}
             setValue={setEmail}
             type="email"
@@ -113,8 +113,8 @@ export default function InfoTab({ data }) {
           />
           <TextInput
             isNumber
-            label="Phone Number"
-            placeholder="No phone number added"
+            label="মোবাইল নম্বর"
+            placeholder="মোবাইল নম্বর"
             value={phone}
             // setValue={setPhone}
             disabled
@@ -124,7 +124,7 @@ export default function InfoTab({ data }) {
         </div>
       </div>
       <div className="py-1 text-center mt-4 lg:mt-6">
-        <SubmitButton handleSubmit={handleSubmit} label="Save Now" />
+        <SubmitButton handleSubmit={handleSubmit} label="সেভ করুন" />
       </div>
     </div>
   );

@@ -45,7 +45,7 @@ export default function ProfileDropdown({ image }) {
             />
           ))}
           <span onClick={handleLogOut}>
-            <DropdownItem href="#" text="Logout" Icon={FaSignOutAlt} isDanger />
+            <DropdownItem href="#" text="লগ-আউট" Icon={FaSignOutAlt} />
           </span>
         </div>
       </div>
@@ -61,9 +61,8 @@ const DropdownItem = ({ href, text, Icon, isDanger = false }) => {
   return (
     <Link
       href={href}
-      className={`flex items-center gap-2 px-4 py-2 text-sm rounded-md mx-1 ${
-        isDanger ? dangerClasses : normalClasses
-      } transition-colors duration-100`}
+      className={`flex items-center gap-2 px-4 py-2 text-sm rounded-md mx-1 ${isDanger ? dangerClasses : normalClasses
+        } transition-colors duration-100`}
       role="menuitem"
     >
       <Icon />

@@ -17,7 +17,6 @@ const LocationMap = dynamic(() => import("./components/map/Map"), {
 export default function LocationInput({
   selectedLocation: prevSelectedLocation,
   handleAddLocation,
-  btnText,
 }) {
   const [query, setQuery] = useState("");
   const [suggestions, setSuggestions] = useState([]);
@@ -137,7 +136,7 @@ export default function LocationInput({
           <TextInput
             value={query}
             setValue={handleSearch}
-            placeholder="Search Location"
+            placeholder="স্থান অনুসন্ধান করুন"
             className={"grow"}
           />
           <button
@@ -172,7 +171,7 @@ export default function LocationInput({
             <GiClick className="text-xl" />
             <span className="text-sm">
               {" "}
-              Click on the map to select your location
+              ম্যাপে ক্লিক করে আপনার স্থান নির্বাচন করুন
             </span>
           </span>
           <span className="text-2xl">{")"}</span>
@@ -194,24 +193,15 @@ export default function LocationInput({
           </div>
         )}
         <TextAreaInput
-          label={"Your full address"}
+          // label={"Your full address"}
+          label={"আপনার পূর্ণ ঠিকানা"}
           value={address}
           setValue={setAddress}
           containerClassName={"mt-4"}
-          placeholder={"H-56/3, North Adabar, Dhaka-1207"}
+          placeholder={"বাসা-৫৬/৩, উত্তর আদাবর, ঢাকা-১২০৭"}
+
           inputClass={"h-32 resize-none"}
         />
-        {/* <Button
-          text={btnText}
-          handleSubmit={() =>
-            handleAddLocation({
-              lat: selectedPosition?.[0] ?? center[0],
-              long: selectedPosition?.[1] ?? center[1],
-              address,
-            })
-          }
-          containerClassName={"w-fit mt-4 px-10 mx-auto block"}
-        /> */}
       </div>
     </div>
   );
