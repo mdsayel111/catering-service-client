@@ -1,5 +1,5 @@
 import Container from "@/components/shared/container/Container";
-import SectionTitle from "@/components/shared/SectionTitle/SectionTitle";
+import SectionTitle from "@/components/shared/Titles/SectionTitle";
 import fetchData from "@/utils/fetch";
 import Image from "next/image";
 // --- Main App Component for Detail Page ---

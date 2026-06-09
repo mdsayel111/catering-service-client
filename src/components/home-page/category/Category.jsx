@@ -1,5 +1,5 @@
 import CustomSlider from "@/components/shared/custom-slider/CustomSlider";
-import SectionTitle from "@/components/shared/SectionTitle/SectionTitle";
+import SectionTitle from "@/components/shared/Titles/SectionTitle";
 import Image from "next/image";
 import Link from "next/link";
 

@@ -1,6 +1,6 @@
 'use client';
 
-import ProductCard from '@/components/shared/product-card/ProductCard';
+import ItemCard from '@/components/shared/product-card/ItemCard';
 
 const items = [
     {
@@ -52,7 +52,7 @@ const Products = () => {
         <section className="px-3 mt-16">
             <div className="grid gap-2 md:gap-4 grid-cols-3 lg:grid-cols-4">
                 {items.map((product, idx) => (
-                    <ProductCard item={product} key={idx} />
+                    <ItemCard item={product} key={idx} />
                 ))}
             </div>
         </section>

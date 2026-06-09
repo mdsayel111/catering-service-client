@@ -2,7 +2,7 @@
 
 import NotData from "@/components/shared/no-data/NoData";
 import Pagination from "@/components/shared/pagination/Pagination";
-import ProductCard from "@/components/shared/product-card/ProductCard";
+import ItemCard from "@/components/shared/product-card/ItemCard";
 import config from "@/config";
 import useAuthAxios from "@/hooks/useAuthAxios";
 import { useEffect, useState } from "react";
@@ -33,7 +33,7 @@ export default function page() {
           <div className="grid grid-cols-3 gap-4">
             <>
               {products.map((item, index) => (
-                <ProductCard item={item} key={index} />
+                <ItemCard item={item} key={index} />
               ))}
             </>
           </div>

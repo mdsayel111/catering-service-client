@@ -4,6 +4,7 @@ import OrderSummary from "@/components/cart/oredr-summary/OrderSummary";
 import Container from "@/components/shared/container/Container";
 import NotData from "@/components/shared/no-data/NoData";
 import useAxios from "@/hooks/useAxios";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 
@@ -37,6 +38,7 @@ export default function page() {
       : 0;
     setDiscount(totalDiscount);
   };
+
   useEffect(() => {
     const getData = async () => {
       const {
@@ -78,22 +80,39 @@ export default function page() {
             "grid my-4 lg:my-10 grid-cols-1 md:gap-6 lg:gap-10  md:px-4 px-2"
           }
         >
-          <div>
-            <CartItems cartItems={finalCartItems} loading={loading} />
+          <div className="grid grid-cols-1 lg:grid-cols-[70%_30%] gap-4 lg:gap-10">
+            <div>
+              <CartItems cartItems={finalCartItems} loading={loading} />
+              <div className="mt-4 mb-6 justify-between gap-4  flex">
+                <Link
+                  href={"/products"}
+                  className="text-black cursor-pointer hover:bg-black hover:text-white text-sm font-semibold py-3 px-6 rounded border border-black transition text-nowrap"
+                >
+                  কেনাকাটা চালিয়ে যান
+                </Link>
+                <Link
+                  href="/checkout"
+                  className="bg-black cursor-pointer text-white hover:border hover:border-black text-sm font-semibold py-3 px-6 rounded hover:bg-white hover:text-black transition text-nowrap"
+                >
+                  চেকআউট করুন
+                </Link>
+              </div>
+            </div>
+            <OrderSummary
+              handleCouponApply={handleCouponApply}
+              discount={discount}
+              shippingCharges={shippingCharges}
+              shippingCharge={shippingCharge}
+              subtotal={subtotal}
+              total={total}
+              setShippingCharge={setShippingCharge}
+              couponCode={couponCode}
+              setCouponCode={setCouponCode}
+              paymentMethod={paymentMethod}
+              setPaymentMethod={setPaymentMethod}
+            />
           </div>
-          {/* <OrderSummary
-            handleCouponApply={handleCouponApply}
-            discount={discount}
-            shippingCharges={shippingCharges}
-            shippingCharge={shippingCharge}
-            subtotal={subtotal}
-            total={total}
-            setShippingCharge={setShippingCharge}
-            couponCode={couponCode}
-            setCouponCode={setCouponCode}
-            paymentMethod={paymentMethod}
-            setPaymentMethod={setPaymentMethod}
-          /> */}
+
         </Container>
       ) : (
         <div className="flex justify-center items-center h-screen">

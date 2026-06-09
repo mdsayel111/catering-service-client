@@ -6,8 +6,6 @@ import SingleItem from "@/components/shared/single-item/SingleItem";
 import { useState } from "react";
 
 export default function page() {
-  
-
   return (
     <Container >
       <SingleItem />

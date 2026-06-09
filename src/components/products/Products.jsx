@@ -7,7 +7,7 @@ import { Suspense, useEffect, useState } from "react";
 import RangeInput from "../shared/inputs/range-input/RangeInput";
 import NotData from "../shared/no-data/NoData";
 import Pagination from "../shared/pagination/Pagination";
-import ProductCard from "../shared/product-card/ProductCard";
+import ItemCard from "../shared/product-card/ItemCard";
 import OutsideClickCloseWrapper from "../wrappers/OutsideClickedCloseWrapper";
 
 function Products({ products: productsFromApi, categories }) {
@@ -157,7 +157,7 @@ function Products({ products: productsFromApi, categories }) {
         {products.length > 0 ? (
           <div className="grid mt-6 lg:mt-0 gap-4 grid-cols-2 md:grid-cols-3">
             {products?.map((item, index) => (
-              <ProductCard item={item} key={index} />
+              <ItemCard item={item} key={index} />
             ))}
           </div>
         ) : (

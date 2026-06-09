@@ -1,5 +1,5 @@
 import Container from "@/components/shared/container/Container";
-import SectionTitle from "@/components/shared/SectionTitle/SectionTitle";
+import SectionTitle from "@/components/shared/Titles/SectionTitle";
 import fetchData from "@/utils/fetch";
 
 export default async function page() {

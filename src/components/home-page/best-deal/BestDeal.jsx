@@ -1,7 +1,7 @@
 "use client";
 
-import ProductCard from "@/components/shared/product-card/ProductCard";
-import SectionTitle from "@/components/shared/SectionTitle/SectionTitle";
+import ItemCard from "@/components/shared/product-card/ItemCard";
+import SectionTitle from "@/components/shared/Titles/SectionTitle";
 import useAxios from "@/hooks/useAxios";
 import useGetData from "@/hooks/useGetData";
 import Link from "next/link";
@@ -29,26 +29,23 @@ const BestDeals = () => {
     return () => window.removeEventListener("resize", updateItems);
   }, []);
 
-  if(products?.length === 0){
+  if (products?.length === 0) {
     return null;
   }
 
   return (
-    <section className="px-3">
-      <div className="flex items-center mb-6 justify-between">
-        <SectionTitle title="গ্রাহকদের পছন্দের পণ্য" />
-        <div className="text-[14px] font-bold">
-          <Link href="/products">
-            <span className="text-sm md:text-[14px]">সব দেখুন</span>
-            <i className="fa-solid fa-angle-right px-2 text-[8px] md:text-[12px] py-1.5 bg-black ml-2 text-white rounded-full"></i>
-          </Link>
-        </div>
-      </div>
-
+    <section className="px-3 mt-16">
+      <SectionTitle title="গ্রাহকদের পছন্দের পণ্য" className={"text-center mb-6 md:mb-8 lg:mb-14"} />
       <div className="grid gap-2 md:gap-4 grid-cols-2 md:grid-cols-3 lg:grid-cols-5 xl:grid-cols-5">
         {products?.slice(0, itemsToShow).map((product, idx) => (
-          <ProductCard item={product} key={idx} loading={loading} />
+          <ItemCard item={product} key={idx} loading={loading} />
         ))}
+      </div>
+      <div className="text-[14px] font-bold mt-8 text-center">
+        <Link href="/products">
+          <span className="text-sm md:text-[14px]">সব দেখুন</span>
+          <i className="fa-solid fa-angle-right px-2 text-[8px] md:text-[12px] py-1.5 bg-black ml-2 text-white rounded-full"></i>
+        </Link>
       </div>
     </section>
   );

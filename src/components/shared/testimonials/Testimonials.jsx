@@ -1,5 +1,5 @@
 import CustomSlider from "@/components/shared/custom-slider/CustomSlider";
-import SectionTitle from "@/components/shared/SectionTitle/SectionTitle";
+import SectionTitle from "@/components/shared/Titles/SectionTitle";
 import { FaQuoteRight } from "react-icons/fa";
 export default function Testimonials({data}) {
   return (

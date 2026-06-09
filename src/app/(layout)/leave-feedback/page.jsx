@@ -1,6 +1,6 @@
 "use client";
 import Button from "@/components/shared/button/Button";
-import SectionTitle from "@/components/shared/SectionTitle/SectionTitle";
+import SectionTitle from "@/components/shared/Titles/SectionTitle";
 import useAuthAxios from "@/hooks/useAuthAxios";
 import React, { useState } from "react";
 import toast from "react-hot-toast";
@@ -24,7 +24,7 @@ const FeedbackForm = () => {
       onSubmit={handleSubmit}
       className="w-full max-w-md mx-auto bg-white p-8 rounded-xl shadow-lg"
     >
-      <SectionTitle title={"Leave Feedback"} className={"text-center mb-4"} />
+      <SectionTitle title={"ফিডব্যাক দিন"} className={"text-center mb-4"} />
 
       {/* Feedback Text Area */}
       <div className="mb-6">
@@ -33,13 +33,13 @@ const FeedbackForm = () => {
           name="feedback"
           rows="5"
           className="w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:ring-0 transition duration-150 ease-in-out resize-none"
-          placeholder="What's on your mind?"
+          placeholder="আপনি কী ভাবছেন?"
           value={feedback}
           onChange={(e) => setFeedback(e.target.value)}
           required
         ></textarea>
       </div>
-      <Button text={"Submit"} onClick={handleSubmit} />
+      <Button text={"সাবমিট করুন"} onClick={handleSubmit} />
     </form>
   );
 };

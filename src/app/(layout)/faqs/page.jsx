@@ -1,6 +1,6 @@
 "use client";
 
-import SectionTitle from "@/components/shared/SectionTitle/SectionTitle";
+import SectionTitle from "@/components/shared/Titles/SectionTitle";
 import React, { useEffect, useState } from "react";
 import useAxios from "../../../hooks/useAxios";
 

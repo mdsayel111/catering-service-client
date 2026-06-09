@@ -41,6 +41,10 @@ export const navItems = [
     text: "খাবার",
   },
   {
+    path: "/package",
+    text: "প্যাকেজ ",
+  },
+  {
     path: "/cart",
     text: "কার্ট",
   },

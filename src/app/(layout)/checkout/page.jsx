@@ -4,7 +4,7 @@ import Address from "@/components/checkout/address/Address";
 import CartItems from "@/components/checkout/cart-items/CartItems";
 import Container from "@/components/shared/container/Container";
 import TextInput from "@/components/shared/inputs/text-input/TextInput";
-import SectionTitle from "@/components/shared/SectionTitle/SectionTitle";
+import SectionTitle from "@/components/shared/Titles/SectionTitle";
 import useAxios from "@/hooks/useAxios";
 import { removeAllCartItems } from "@/lib/redux/features/cartSlice";
 import { cn } from "@/utils/cn";

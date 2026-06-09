@@ -13,7 +13,7 @@ import Modal from "../modal/Modal";
 import TakaSymbol from "../Taka-Symbol";
 import ProductDetailsModalContents from "./components/product-details-modal-contents/ProductDetailsModalContents";
 
-export default function ProductCard({ item, loading }) {
+export default function ItemCard({ item, loading, type = "product" }) {
   const [isDetailsOpen, setIsDetailsOpen] = useState(false);
   const wishlists = useSelector((state) => state.wishlist?.wishlistItems);
   const dispatch = useDispatch();
@@ -118,7 +118,7 @@ export default function ProductCard({ item, loading }) {
                       <>
                         <TakaSymbol />
                         <span className=" text-red-500">
-                          Current Market Price
+                          বর্তমানে নেই
                         </span>
                       </>
                     )}
@@ -148,7 +148,7 @@ export default function ProductCard({ item, loading }) {
           <Modal
             isOpen={isDetailsOpen}
             containerClassName={"max-w-4xl"}
-            title={"Product Details"}
+            title={"খাবার তথ্য"}
             onClose={() => setIsDetailsOpen(false)}
           >
             <ProductDetailsModalContents

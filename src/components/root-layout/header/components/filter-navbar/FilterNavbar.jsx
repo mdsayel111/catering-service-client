@@ -21,7 +21,6 @@ export default function FilterNavbar() {
 
   const [suggestedProducts, setSuggestedProducts] = useState([]);
 
-  const threshold = 10;
   const [visible, setVisible] = useState(true);
   const [showSearch, setShowSearch] = useState(false);
 
@@ -30,21 +29,9 @@ export default function FilterNavbar() {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
 
-      // if (currentScrollY > threshold && currentScrollY > lastScroll) {
-      //   setVisible(false);
-      // }
-
-      // // Scroll up → show
-      // if (
-      //   currentScrollY < lastScroll &&
-      //   lastScroll - currentScrollY > threshold
-      // ) {
-      //   setVisible(true);
-      // }
-
-      if(currentScrollY > 50){
+      if (currentScrollY > 50) {
         setVisible(false);
-      }else{
+      } else {
         setVisible(true);
       }
 
@@ -65,9 +52,23 @@ export default function FilterNavbar() {
     }
   }, [search]);
 
+  let isShowable = true;
+
+  switch (path) {
+    case "/cart":
+      isShowable = false;
+      break;
+    case "/package":
+      isShowable = false;
+      break;
+    default:
+      break;
+  }
+
+
   return (
     <>
-      {path !== "/cart" && (
+      {isShowable && (
         <div
           className={cn(
             "duration-200 py-6 z-[49] block bg-tertiary-color  sticky top-[50px] lg:top-[70.86px]",
@@ -116,9 +117,8 @@ export default function FilterNavbar() {
                   </svg>
                 </button>
                 <div
-                  className={`absolute top-12 -translate-y-0.5 border-x border-b !border-black rounded-b-sm left-0 w-full max-h-[30vh] bg-[#f4f1f7] shadow-xl z-50 overflow-y-auto transition-transform duration-300 ease-in-out ${
-                    showCategory ? "translate-x-0" : "translate-x-full hidden"
-                  }`}
+                  className={`absolute top-12 -translate-y-0.5 border-x border-b !border-black rounded-b-sm left-0 w-full max-h-[30vh] bg-[#f4f1f7] shadow-xl z-50 overflow-y-auto transition-transform duration-300 ease-in-out ${showCategory ? "translate-x-0" : "translate-x-full hidden"
+                    }`}
                 >
                   <div className="">
                     {categories?.length > 0 &&

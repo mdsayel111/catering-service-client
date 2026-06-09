@@ -109,7 +109,7 @@ export default function CartCard({
             {hasRemove && (
               <button
                 onClick={() => dispatch(removeFromCart(item?._id))}
-                className="text-red-500 text-center hover:underline"
+                className="text-red-500 text-center"
               >
                 ✖
               </button>
