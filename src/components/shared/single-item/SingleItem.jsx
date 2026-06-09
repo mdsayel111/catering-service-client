@@ -27,9 +27,8 @@ export default function SingleItem() {
 
   const handleAddToCart = (e) => {
     e.stopPropagation();
-    dispatch(addToCart({ id: product._id, quantity: quantity }));
+    dispatch(addToCart({ id: product._id, quantity: quantity, type: "product" }));
     setQuantity(1);
-    toast.success("খাবার কার্টে যোগ করা হয়েছে");
   };
 
   useEffect(() => {
@@ -301,123 +300,123 @@ export default function SingleItem() {
             </div>
           </div>
 
-            <div className="border mt-8 py-4">
-              <h2 className="text-[16px] font-semibold border-b pb-4 pl-4">
-                Description
-              </h2>
-              <div
-                className="p-2 md:p-6"
-                dangerouslySetInnerHTML={{ __html: product?.description }}
-              ></div>
-            </div>
-            <div className="border mt-8 py-4">
-              <h2 className="text-[16px] font-semibold border-b pb-4 px-4">
-                Customer Feedback
-              </h2>
+          <div className="border mt-8 py-4">
+            <h2 className="text-[16px] font-semibold border-b pb-4 pl-4">
+              Description
+            </h2>
+            <div
+              className="p-2 md:p-6"
+              dangerouslySetInnerHTML={{ __html: product?.description }}
+            ></div>
+          </div>
+          <div className="border mt-8 py-4">
+            <h2 className="text-[16px] font-semibold border-b pb-4 px-4">
+              Customer Feedback
+            </h2>
 
-              <div className="p-4 flex flex-col lg:flex-row gap-8">
-                <div className="text-center lg:w-1/4">
-                  <h2 className="text-[48px] font-bold text-red-500 leading-none">
-                    0
-                  </h2>
-                  <div className="text-yellow-400 text-lg my-2">
-                    <i className="fa-solid fa-star"></i>
-                    <i className="fa-solid fa-star"></i>
-                    <i className="fa-solid fa-star"></i>
-                    <i className="fa-solid fa-star"></i>
-                    <i className="fa-solid fa-star"></i>
-                  </div>
-                  <p className="text-sm text-[#687083]">0 Verified ratings</p>
+            <div className="p-4 flex flex-col lg:flex-row gap-8">
+              <div className="text-center lg:w-1/4">
+                <h2 className="text-[48px] font-bold text-red-500 leading-none">
+                  0
+                </h2>
+                <div className="text-yellow-400 text-lg my-2">
+                  <i className="fa-solid fa-star"></i>
+                  <i className="fa-solid fa-star"></i>
+                  <i className="fa-solid fa-star"></i>
+                  <i className="fa-solid fa-star"></i>
+                  <i className="fa-solid fa-star"></i>
                 </div>
-
-                <div className="flex-1 space-y-2">
-                  <div className="flex items-center gap-3">
-                    <div className="w-full h-2 bg-gray-200 rounded-full"></div>
-                    <div className="flex text-yellow-400 text-sm gap-1 w-24">
-                      <i className="fa-solid fa-star"></i>
-                      <i className="fa-solid fa-star"></i>
-                      <i className="fa-solid fa-star"></i>
-                      <i className="fa-solid fa-star"></i>
-                      <i className="fa-solid fa-star"></i>
-                    </div>
-                    <span className="text-sm text-[#687083]">0%</span>
-                  </div>
-
-                  <div className="flex items-center gap-3">
-                    <div className="w-full h-2 bg-gray-200 rounded-full"></div>
-                    <div className="flex text-yellow-400 text-sm gap-1 w-24">
-                      <i className="fa-solid fa-star"></i>
-                      <i className="fa-solid fa-star"></i>
-                      <i className="fa-solid fa-star"></i>
-                      <i className="fa-solid fa-star"></i>
-                      <i className="fa-regular fa-star"></i>
-                    </div>
-                    <span className="text-sm text-[#687083]">0%</span>
-                  </div>
-
-                  <div className="flex items-center gap-3">
-                    <div className="w-full h-2 bg-gray-200 rounded-full"></div>
-                    <div className="flex text-yellow-400 text-sm gap-1 w-24">
-                      <i className="fa-solid fa-star"></i>
-                      <i className="fa-solid fa-star"></i>
-                      <i className="fa-solid fa-star"></i>
-                      <i className="fa-regular fa-star"></i>
-                      <i className="fa-regular fa-star"></i>
-                    </div>
-                    <span className="text-sm text-[#687083]">0%</span>
-                  </div>
-
-                  <div className="flex items-center gap-3">
-                    <div className="w-full h-2 bg-gray-200 rounded-full"></div>
-                    <div className="flex text-yellow-400 text-sm gap-1 w-24">
-                      <i className="fa-solid fa-star"></i>
-                      <i className="fa-solid fa-star"></i>
-                      <i className="fa-regular fa-star"></i>
-                      <i className="fa-regular fa-star"></i>
-                      <i className="fa-regular fa-star"></i>
-                    </div>
-                    <span className="text-sm text-[#687083]">0%</span>
-                  </div>
-
-                  <div className="flex items-center gap-3">
-                    <div className="w-full h-2 bg-gray-200 rounded-full"></div>
-                    <div className="flex text-yellow-400 text-sm gap-1 w-24">
-                      <i className="fa-solid fa-star"></i>
-                      <i className="fa-regular fa-star"></i>
-                      <i className="fa-regular fa-star"></i>
-                      <i className="fa-regular fa-star"></i>
-                      <i className="fa-regular fa-star"></i>
-                    </div>
-                    <span className="text-sm text-[#687083]">0%</span>
-                  </div>
-                </div>
+                <p className="text-sm text-[#687083]">0 Verified ratings</p>
               </div>
 
-              <div className="flex gap-2 flex-wrap mt-6 px-4">
-                <button className="px-4 py-1 border border-red-500 bg-red-100 text-red-600 text-sm font-semibold rounded">
-                  All
-                </button>
-                <button className="px-4 py-1 border text-sm font-semibold rounded">
-                  5 <i className="fa-solid fa-star text-yellow-400 ml-1"></i>
-                </button>
-                <button className="px-4 py-1 border text-sm font-semibold rounded">
-                  4 <i className="fa-solid fa-star text-yellow-400 ml-1"></i>
-                </button>
-                <button className="px-4 py-1 border text-sm font-semibold rounded">
-                  3 <i className="fa-solid fa-star text-yellow-400 ml-1"></i>
-                </button>
-                <button className="px-4 py-1 border text-sm font-semibold rounded">
-                  2 <i className="fa-solid fa-star text-yellow-400 ml-1"></i>
-                </button>
-                <button className="px-4 py-1 border text-sm font-semibold rounded">
-                  1 <i className="fa-solid fa-star text-yellow-400 ml-1"></i>
-                </button>
-              </div>
+              <div className="flex-1 space-y-2">
+                <div className="flex items-center gap-3">
+                  <div className="w-full h-2 bg-gray-200 rounded-full"></div>
+                  <div className="flex text-yellow-400 text-sm gap-1 w-24">
+                    <i className="fa-solid fa-star"></i>
+                    <i className="fa-solid fa-star"></i>
+                    <i className="fa-solid fa-star"></i>
+                    <i className="fa-solid fa-star"></i>
+                    <i className="fa-solid fa-star"></i>
+                  </div>
+                  <span className="text-sm text-[#687083]">0%</span>
+                </div>
 
-              <p className="px-4 py-6 text-sm text-[#687083]">
-                No review found.
-              </p>
+                <div className="flex items-center gap-3">
+                  <div className="w-full h-2 bg-gray-200 rounded-full"></div>
+                  <div className="flex text-yellow-400 text-sm gap-1 w-24">
+                    <i className="fa-solid fa-star"></i>
+                    <i className="fa-solid fa-star"></i>
+                    <i className="fa-solid fa-star"></i>
+                    <i className="fa-solid fa-star"></i>
+                    <i className="fa-regular fa-star"></i>
+                  </div>
+                  <span className="text-sm text-[#687083]">0%</span>
+                </div>
+
+                <div className="flex items-center gap-3">
+                  <div className="w-full h-2 bg-gray-200 rounded-full"></div>
+                  <div className="flex text-yellow-400 text-sm gap-1 w-24">
+                    <i className="fa-solid fa-star"></i>
+                    <i className="fa-solid fa-star"></i>
+                    <i className="fa-solid fa-star"></i>
+                    <i className="fa-regular fa-star"></i>
+                    <i className="fa-regular fa-star"></i>
+                  </div>
+                  <span className="text-sm text-[#687083]">0%</span>
+                </div>
+
+                <div className="flex items-center gap-3">
+                  <div className="w-full h-2 bg-gray-200 rounded-full"></div>
+                  <div className="flex text-yellow-400 text-sm gap-1 w-24">
+                    <i className="fa-solid fa-star"></i>
+                    <i className="fa-solid fa-star"></i>
+                    <i className="fa-regular fa-star"></i>
+                    <i className="fa-regular fa-star"></i>
+                    <i className="fa-regular fa-star"></i>
+                  </div>
+                  <span className="text-sm text-[#687083]">0%</span>
+                </div>
+
+                <div className="flex items-center gap-3">
+                  <div className="w-full h-2 bg-gray-200 rounded-full"></div>
+                  <div className="flex text-yellow-400 text-sm gap-1 w-24">
+                    <i className="fa-solid fa-star"></i>
+                    <i className="fa-regular fa-star"></i>
+                    <i className="fa-regular fa-star"></i>
+                    <i className="fa-regular fa-star"></i>
+                    <i className="fa-regular fa-star"></i>
+                  </div>
+                  <span className="text-sm text-[#687083]">0%</span>
+                </div>
+              </div>
             </div>
+
+            <div className="flex gap-2 flex-wrap mt-6 px-4">
+              <button className="px-4 py-1 border border-red-500 bg-red-100 text-red-600 text-sm font-semibold rounded">
+                All
+              </button>
+              <button className="px-4 py-1 border text-sm font-semibold rounded">
+                5 <i className="fa-solid fa-star text-yellow-400 ml-1"></i>
+              </button>
+              <button className="px-4 py-1 border text-sm font-semibold rounded">
+                4 <i className="fa-solid fa-star text-yellow-400 ml-1"></i>
+              </button>
+              <button className="px-4 py-1 border text-sm font-semibold rounded">
+                3 <i className="fa-solid fa-star text-yellow-400 ml-1"></i>
+              </button>
+              <button className="px-4 py-1 border text-sm font-semibold rounded">
+                2 <i className="fa-solid fa-star text-yellow-400 ml-1"></i>
+              </button>
+              <button className="px-4 py-1 border text-sm font-semibold rounded">
+                1 <i className="fa-solid fa-star text-yellow-400 ml-1"></i>
+              </button>
+            </div>
+
+            <p className="px-4 py-6 text-sm text-[#687083]">
+              No review found.
+            </p>
+          </div>
         </div>
       )}
     </>

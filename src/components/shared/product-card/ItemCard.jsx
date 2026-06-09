@@ -19,8 +19,7 @@ export default function ItemCard({ item, loading, type = "product" }) {
   const dispatch = useDispatch();
   const router = useRouter();
   const handleAddToCart = () => {
-    dispatch(addToCart({ id: item._id, quantity: 1 }));
-    toast.success("খাবার কার্টে যোগ করা হয়েছে");
+    dispatch(addToCart({ id: item._id, quantity: 1, type: "product" }));
     setIsDetailsOpen(false);
   };
 
@@ -132,13 +131,13 @@ export default function ItemCard({ item, loading, type = "product" }) {
                       className="px-2 py-1.5 lg:w-1/2 rounded-md flex justify-center border !border-black text-black font-medium text-sm"
                       onClick={handleBuyNow}
                     >
-                      Buy Now
+                      এখনই কিনুন
                     </button>
                     <button
                       onClick={handleAddToCart}
                       className="px-2 py-2 lg:w-1/2 rounded-md flex justify-center bg-black text-white font-medium text-sm"
                     >
-                      Add to Cart
+                      কার্টে যোগ করুন
                     </button>
                   </div>
                 </div>

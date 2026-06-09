@@ -23,9 +23,8 @@ export default function ProductDetailsModalContents({
   const dispatch = useDispatch();
 
   const handleAddToCart = () => {
-    dispatch(addToCart({ id: product._id, quantity: quantity }));
+    dispatch(addToCart({ id: product._id, quantity: quantity, type: "product" }));
     setQuantity(1);
-    toast.success("খাবার কার্টে যোগ করা হয়েছে");
     router.push("/cart");
   };
 
@@ -233,7 +232,7 @@ export default function ProductDetailsModalContents({
               </h2>
 
               <div className="flex my-4 gap-3 items-center">
-                <p className="text-sm text-[#687083]">Quantity:</p>
+                <p className="text-sm text-[#687083]">সংখ্যা:</p>
                 <div className="flex border text-center">
                   <button
                     className="py-1 px-3 bg-slate-200 cursor-pointer"
@@ -256,7 +255,7 @@ export default function ProductDetailsModalContents({
               </div>
 
               <h2 className="font-medium text-[16px] border-b pb-4 lg:text-[20px] mt-6">
-                Total: $ {product?.price * quantity}
+                মোট: $ {product?.price * quantity}
               </h2>
 
               <div className="flex gap-4 mt-6">
@@ -264,13 +263,13 @@ export default function ProductDetailsModalContents({
                   onClick={handleAddToCart}
                   className="px-2 py-3 md:py-4 w-1/2 rounded-md flex justify-center bg-black text-white font-medium text-sm"
                 >
-                  Add to Cart
+                  কার্টে যোগ করুন
                 </button>
                 <button
                   className="px-2 py-2 md:py-4 w-1/2 rounded-md flex justify-center border !border-black text-black font-medium text-sm"
                   onClick={handleBuyNow}
                 >
-                  Buy Now
+                  এখনই কিনুন
                 </button>
               </div>
             </div>
@@ -279,7 +278,7 @@ export default function ProductDetailsModalContents({
           {product?.description && (
             <div className="border mt-8 py-4">
               <h2 className="text-[16px] font-semibold border-b pb-4 pl-4">
-                Description
+                বিবরণ
               </h2>
               <div
                 className="p-2 md:p-6"

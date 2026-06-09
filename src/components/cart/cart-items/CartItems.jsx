@@ -7,7 +7,7 @@ export default function CartItems({ cartItems, loading }) {
         <h5 className="col-span-1">ছবি</h5>
         <h5 className="col-span-1">নাম</h5>
         <h5 className="text-center">মূল্য</h5>
-        <h5 className="text-center">পরিমান সংখ্যা</h5>
+        <h5 className="text-center">সংখ্যা</h5>
         <h5 className="text-center hidden lg:block">মোট</h5>
         <h5 className="text-center">সরান</h5>
       </div>
