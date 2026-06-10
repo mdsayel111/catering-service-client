@@ -38,7 +38,7 @@ export default function TopNavbar() {
   };
 
   return (
-    <div className="mx-auto w-full lg:pb-0 sticky top-0 z-50  bg-tertiary-color ">
+    <div className="mx-auto w-full lg:pb-0 sticky top-0 z-50  bg-[#f3f4f6] ">
       <div className="max-w-7xl mx-auto px-4 py-4 lg:py-2 relative z-10 flex items-center justify-between">
         <span className="block w-[150px]">
           <Logo image="lightImage" src={"/images/logo-1.png"} />

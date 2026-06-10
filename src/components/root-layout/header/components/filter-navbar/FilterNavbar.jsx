@@ -71,7 +71,7 @@ export default function FilterNavbar() {
       {isShowable && (
         <div
           className={cn(
-            "duration-200 py-6 z-[49] block bg-tertiary-color  sticky top-[50px] lg:top-[70.86px]",
+            "duration-200 py-6 z-[49] block bg-[#f3f4f6]  sticky top-[35px] lg:top-[70.86px]",
             visible ? "translate-y-0 " : "-translate-y-full "
           )}
         >

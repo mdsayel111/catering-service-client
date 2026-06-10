@@ -7,7 +7,7 @@ const Footer = async () => {
   const { data: footerData } =
     (await fetchData("/client/footer", { cache: "no-store" })) || {};
   return (
-    <footer className="bg-primary-color">
+    <footer className="bg-black">
       <div className="grid container mx-auto px-6 max-w-7xl grid-cols-3 md:grid-cols-4 lg:grid-cols-12 gap-8 pt-14 md:pt-28 pb-8">
         <div className="self-center col-span-3 md:col-span-1  lg:col-span-2 w-auto mx-auto md:ml-0">
           <Logo
