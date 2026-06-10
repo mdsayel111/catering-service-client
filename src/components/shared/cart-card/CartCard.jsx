@@ -1,3 +1,5 @@
+"use client";
+
 import {
   decreaseQuantity,
   increaseQuantity,
@@ -15,108 +17,154 @@ export default function CartCard({
   hasRemove = true,
 }) {
   const dispatch = useDispatch();
+
+  console.log(item);
+
+  const itemId =
+    item?.type === "package"
+      ? item?.packageId || item?.id
+      : item?.item?._id;
+
+  // =========================
+  // LOADING UI
+  // =========================
+  if (loading) {
+    return (
+      <div className="mt-2 space-y-3">
+        <div className="bg-white border rounded-md p-3 grid grid-cols-5 md:grid-cols-6 items-center animate-pulse">
+          <div className="col-span-2 flex gap-2 items-center">
+            <div className="w-10 h-10 bg-gray-200 rounded" />
+            <div className="space-y-2">
+              <div className="h-3 w-24 bg-gray-200 rounded" />
+              <div className="h-2 w-16 bg-gray-200 rounded" />
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  // =========================
+  // NORMALIZE DATA
+  // =========================
+
+  const isPackage = item?.type === "package";
+
+  const product = isPackage ? null : item?.item;
+  const packageItems = isPackage ? item?.items || [] : [];
+
+  const image = isPackage
+    ? packageItems?.[0]?.image
+    : product?.image;
+
+  const title = isPackage
+    ? `Package (${packageItems.length} items)`
+    : product?.title;
+
+  const unitPrice = isPackage
+    ? packageItems.reduce(
+      (sum, p) => sum + (p.packagePrice || 0),
+      0
+    )
+    : product?.price || 0;
+
+  const totalPrice = unitPrice * (item?.quantity || 1);
+
+  // =========================
+  // UI
+  // =========================
   return (
-    <>
-      {loading ? (
-        <div className="mt-2 space-y-3">
-          <div
-            className={cn(
-              "bg-white border rounded-md p-3 grid grid-cols-5 md:grid-cols-6 items-center text-[10px] sm:text-xs md:text-sm animate-pulse",
-              !hasRemove && "grid-cols-4 md:grid-cols-5"
+    <div className="mt-2 space-y-3">
+      <div
+        className={cn(
+          "bg-white border rounded-md p-3 grid grid-cols-[40px_40%_1fr_1fr_1fr] md:grid-cols-6 items-center text-[10px] sm:text-xs md:text-sm",
+          !hasRemove ? "grid-cols-[40px_40%_1fr_1fr] md:grid-cols-[10%_1fr_1fr_1fr_1fr]" : "grid-cols-[40px_40%_1fr_1fr_1fr] md:grid-cols-6"
+        )}
+      >
+        {/* IMAGE + TITLE */}
+        <div className="lg:col-span-1 flex gap-3 items-center">
+          <img
+            className="w-10 h-10 object-cover rounded"
+            src={image}
+            alt={title}
+          />
+          {/* <div className="md:hidden">
+            <h4 className="font-semibold text-gray-700 leading-tight">
+              {title}
+            </h4>
+
+            {isPackage && (
+              <p className="text-[10px] text-gray-500">
+                {packageItems.length} products included
+              </p>
             )}
-          >
-            {/* Image & Title */}
-            <div className="col-span-2 flex gap-2 md:gap-4 items-center">
-              <div className="w-10 h-10 bg-gray-200 rounded"></div>
-              <div className="flex-1 space-y-1">
-                <div className="h-3 bg-gray-200 rounded w-24 mx-auto"></div>
-                <div className="h-2 bg-gray-200 rounded w-16 mx-auto"></div>
-              </div>
-            </div>
-
-            {/* Price (hidden on mobile) */}
-            <div className="hidden md:flex justify-center">
-              <div className="h-3 bg-gray-200 rounded w-10"></div>
-            </div>
-
-            {/* Quantity Controls */}
-            <div className="flex justify-center items-center gap-2">
-              <div className="w-5 h-5 bg-gray-200 rounded"></div>
-              <div className="w-5 h-3 bg-gray-200 rounded"></div>
-              <div className="w-5 h-5 bg-gray-200 rounded"></div>
-            </div>
-
-            {/* Total Price */}
-            <div className="flex justify-center">
-              <div className="h-3 bg-gray-200 rounded w-12"></div>
-            </div>
-
-            {/* Remove Button (conditionally rendered) */}
-            {hasRemove && (
-              <div className="flex justify-center">
-                <div className="h-3 w-3 bg-gray-200 rounded-full"></div>
-              </div>
-            )}
-          </div>
+          </div> */}
         </div>
-      ) : (
-        <div className="mt-2 space-y-3">
-          <div
-            className={cn(
-              "bg-white border rounded-md p-3 grid grid-cols-5 md:grid-cols-6 items-center text-[10px] sm:text-xs md:text-sm",
-              !hasRemove && "grid-cols-4 md:grid-cols-5"
-            )}
-          >
-            <div className="col-span-2 flex gap-2 md:gap-4 items-center">
-              <img
-                className="w-10 h-10 object-cover rounded"
-                src={item.image}
-                alt="Product"
-              />
-              <h4 className="leading-tight font-semibold text-gray-700 text-center grow">
-                {item.title}
-              </h4>
-            </div>
 
-            <p className="text-center font-semibold hidden md:flex items-center gap-1 justify-center">
-              <TakaSymbol className={"w-2.5"} /> <span>{item.price === 0 ? "Current Market Price" : item.price}</span>
+        <div>
+          <h4 className="font-semibold text-gray-700 leading-tight">
+            {title}
+          </h4>
+
+          {isPackage && (
+            <p className="text-[10px] text-gray-500">
+              {packageItems.length} products included
             </p>
-
-            <div className="flex justify-center items-center gap-2">
-              {hasDecrease && (
-                <button
-                  onClick={() => dispatch(decreaseQuantity(item?._id))}
-                  className="w-5 h-5 flex items-center justify-center border rounded text-gray-600 hover:bg-gray-100"
-                >
-                  -
-                </button>
-              )}
-              <span className="w-5 text-center">{item.quantity}</span>
-              {hasIncrease && (
-                <button
-                  onClick={() => dispatch(increaseQuantity(item?._id))}
-                  className="w-5 h-5 flex items-center justify-center border rounded text-gray-600 hover:bg-gray-100"
-                >
-                  +
-                </button>
-              )}
-            </div>
-
-            <p className="text-center font-semibold text-gray-700 flex items-center gap-1 justify-center">
-              <TakaSymbol className={"w-2.5"} /> {item.price * item.quantity}
-            </p>
-
-            {hasRemove && (
-              <button
-                onClick={() => dispatch(removeFromCart(item?._id))}
-                className="text-red-500 text-center"
-              >
-                ✖
-              </button>
-            )}
-          </div>
+          )}
         </div>
-      )}
-    </>
+
+
+        {/* UNIT PRICE */}
+        <p className="hidden md:flex justify-center font-semibold items-center gap-1">
+          <TakaSymbol className="w-2.5" />
+          {unitPrice}
+        </p>
+
+        {/* QUANTITY */}
+        <div className="flex justify-center items-center gap-2">
+          {hasDecrease && (
+            <button
+              onClick={() =>
+                dispatch(decreaseQuantity(itemId))
+              }
+              className="w-5 h-5 border rounded flex items-center justify-center"
+            >
+              -
+            </button>
+          )}
+
+          <span>{item.quantity}</span>
+
+          {hasIncrease && (
+            <button
+              onClick={() =>
+                dispatch(increaseQuantity(itemId))
+              }
+              className="w-5 h-5 border rounded flex items-center justify-center"
+            >
+              +
+            </button>
+          )}
+        </div>
+
+        {/* TOTAL */}
+        <p className="flex justify-center items-center gap-1 font-semibold">
+          <TakaSymbol className="w-2.5" />
+          {totalPrice}
+        </p>
+
+        {/* REMOVE */}
+        {hasRemove && (
+          <button
+            onClick={() =>
+              dispatch(removeFromCart(itemId))
+            }
+            className="text-red-500"
+          >
+            ✖
+          </button>
+        )}
+      </div>
+    </div>
   );
 }

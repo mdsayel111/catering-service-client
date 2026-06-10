@@ -1,4 +1,5 @@
 "use client";
+
 import CartItems from "@/components/cart/cart-items/CartItems";
 import OrderSummary from "@/components/cart/oredr-summary/OrderSummary";
 import Container from "@/components/shared/container/Container";
@@ -8,81 +9,171 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 
-export default function page() {
+export default function Page() {
   const [loading, setLoading] = useState(true);
-  const cartItems = useSelector((state) => state.cart?.cartItems);
+
+  const cartItems = useSelector((state) => state.cart?.cartItems || []);
   const axios = useAxios();
 
-  const [paymentMethod, setPaymentMethod] = useState("online");
+  const [finalCartItems, setFinalCartItems] = useState([]);
 
-  const [finalCartItems, setFinalCartItems] = useState(Array(5).fill(null));
   const [shippingCharges, setShippingCharges] = useState([]);
   const [discountCoupons, setDiscountCoupons] = useState([]);
+
   const [discount, setDiscount] = useState(0);
   const [couponCode, setCouponCode] = useState("");
 
-  // shipping charge logic
-  const subtotal = finalCartItems?.reduce((acc, item) => {
-    return acc + (item?.price || 0) * (item?.quantity || 0);
+  const [shippingCharge, setShippingCharge] = useState({});
+  const [paymentMethod, setPaymentMethod] = useState("online");
+
+  // =========================
+  // COLLECT ALL PRODUCT IDS (product + package items)
+  // =========================
+  const productIds = [
+    ...cartItems
+      .filter((i) => i.type === "product")
+      .map((i) => i.id),
+
+    ...cartItems
+      .filter((i) => i.type === "package")
+      .flatMap((pkg) => pkg.ids || []),
+  ];
+
+  // =========================
+  // SUBTOTAL
+  // =========================
+  const subtotal = finalCartItems.reduce((acc, item) => {
+    if (item.type === "product") {
+      return acc + (item.item?.price || 0) * (item.quantity || 0);
+    }
+
+    if (item.type === "package") {
+      const packagePrice = item.items.reduce(
+        (sum, p) => sum + (p?.packagePrice || 0),
+        0
+      );
+
+      return acc + packagePrice * (item.quantity || 0);
+    }
+
+    return acc;
   }, 0);
 
-  const [shippingCharge, setShippingCharge] = useState({});
-  const total = subtotal + (shippingCharge?.charge || 0) - (discount || 0);
+  const total =
+    subtotal +
+    (shippingCharge?.charge || 0) -
+    (discount || 0);
 
-  const handleCouponApply = async () => {
-    const discountPercentage = discountCoupons.find(
-      (coupon) => coupon.couponCode === couponCode
+  // =========================
+  // COUPON
+  // =========================
+  const handleCouponApply = () => {
+    const percent = discountCoupons.find(
+      (c) => c.couponCode === couponCode
     )?.percent;
-    const totalDiscount = discountPercentage
-      ? (discountPercentage / 100) * subtotal
-      : 0;
-    setDiscount(totalDiscount);
+
+    setDiscount(percent ? (percent / 100) * subtotal : 0);
   };
 
+  // =========================
+  // FETCH ALL PRODUCTS ONLY ONCE
+  // =========================
   useEffect(() => {
     const getData = async () => {
-      const {
-        data: { data: dataFromApi },
-      } = await axios.get(
-        "/client/cart-page?ids=" + cartItems.map((item) => item.id).join(","),
-        cartItems?.map((item) => item?.id)
-      );
-      if (cartItems.length > 0) {
-        setFinalCartItems(
-          dataFromApi?.products?.map((item) => {
-            return {
-              ...item,
-              quantity: cartItems.find((cartItem) => cartItem.id === item._id)
-                ?.quantity,
-            };
-          })
-        );
-      } else {
+      if (!cartItems.length) {
         setFinalCartItems([]);
-      }
-      if (dataFromApi?.shippingCharges?.length > 0) {
-        setShippingCharges(dataFromApi?.shippingCharges);
+        setLoading(false);
+        return;
       }
 
-      if (dataFromApi?.discountCoupons?.length > 0) {
-        setDiscountCoupons(dataFromApi?.discountCoupons);
-      }
+      const {
+        data: { data },
+      } = await axios.get(
+        `/client/cart-page?ids=${productIds.join(",")}`
+      );
+
+      const allProducts = data?.products || [];
+
+      // =========================
+      // BUILD PRODUCT ITEMS
+      // =========================
+      const productItems = cartItems
+        .filter((i) => i.type === "product")
+        .map((cartItem) => {
+          const product = allProducts.find(
+            (p) => p._id === cartItem.id
+          );
+
+          return {
+            type: "product",
+            item: product,
+            quantity: cartItem.quantity,
+          };
+        });
+
+      // =========================
+      // BUILD PACKAGE ITEMS
+      // =========================
+      const packageItems = cartItems
+        .filter((i) => i.type === "package")
+        .map((pkg) => {
+          const items = pkg.ids
+            .map((id) =>
+              allProducts.find((p) => p._id === id)
+            )
+            .filter(Boolean);
+
+          return {
+            type: "package",
+            items,
+            quantity: pkg.quantity,
+          };
+        });
+
+      // =========================
+      // MERGE
+      // =========================
+      setFinalCartItems([...productItems, ...packageItems]);
+
+      setShippingCharges(data?.shippingCharges || []);
+      setDiscountCoupons(data?.discountCoupons || []);
+
       setLoading(false);
     };
+
     getData();
   }, [cartItems]);
 
+  // =========================
+  // UI
+  // =========================
   return (
     <div>
       {finalCartItems.length > 0 ? (
-        <Container
-          className={
-            "grid my-4 lg:my-10 grid-cols-1 md:gap-6 lg:gap-10  md:px-4 px-2"
-          }
-        >
-          <div className="grid grid-cols-1 lg:grid-cols-[70%_30%] gap-4 lg:gap-10">
+        <Container className="grid my-4 lg:my-10 grid-cols-1 md:gap-6 lg:gap-10 md:px-4 px-2">
+
+          <div className="grid lg:grid-cols-[70%_30%] gap-6">
+
             <div>
-              <CartItems cartItems={finalCartItems} loading={loading} />
+              <CartItems
+                cartItems={finalCartItems}
+                loading={loading}
+              />
+              <OrderSummary
+                handleCouponApply={handleCouponApply}
+                discount={discount}
+                shippingCharges={shippingCharges}
+                shippingCharge={shippingCharge}
+                subtotal={subtotal}
+                total={total}
+                setShippingCharge={setShippingCharge}
+                couponCode={couponCode}
+                setCouponCode={setCouponCode}
+                paymentMethod={paymentMethod}
+                setPaymentMethod={setPaymentMethod}
+                containerClassName={"lg:hidden"}
+              />
+
               <div className="mt-4 mb-6 justify-between gap-4  flex">
                 <Link
                   href={"/products"}
@@ -98,6 +189,7 @@ export default function page() {
                 </Link>
               </div>
             </div>
+
             <OrderSummary
               handleCouponApply={handleCouponApply}
               discount={discount}
@@ -110,14 +202,14 @@ export default function page() {
               setCouponCode={setCouponCode}
               paymentMethod={paymentMethod}
               setPaymentMethod={setPaymentMethod}
+              containerClassName={"hidden lg:block"}
             />
+
           </div>
 
         </Container>
       ) : (
-        <div className="flex justify-center items-center h-screen">
-          <NotData text={"cart items"} />
-        </div>
+        <NotData text="cart items" />
       )}
     </div>
   );
