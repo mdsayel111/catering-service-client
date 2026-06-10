@@ -12,9 +12,8 @@ export default async function Home() {
     <div className="mb-12">
       <Banner data={homePageData?.banners} />
       <Container className={"px-0 lg:px-0"}>
-        <Category data={homePageData?.categories} />
-        <BestDeals />
-        {/* <FirstPromotion data={homePageData?.promotions} /> */}
+        <Category data={homePageData?.categories || Array.from({ length: 6 })} />
+        <BestDeals data={homePageData?.products || Array.from({ length: 6 })} />
         {homePageData?.testimonials?.length > 0 && (
           <Testimonials data={homePageData?.testimonials} />
         )}

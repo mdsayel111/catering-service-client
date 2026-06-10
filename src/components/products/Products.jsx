@@ -39,9 +39,6 @@ function Products({ products: productsFromApi, categories }) {
   useEffect(() => {
     const start = (currentPage - 1) * itemsPerPage;
     const end = start + itemsPerPage;
-
-    console.log(start, end)
-
     const filteredProducts = productsFromApi
       .filter((item) => {
         if (selectedCategories.length === 0) {

@@ -9,7 +9,6 @@ const isSamePackage = (a, b) => {
   if (a.type !== "package" || b.type !== "package") return false;
   const aIds = [...(a.ids || [])].sort().join("-");
   const bIds = [...(b.ids || [])].sort().join("-");
-  console.log(aIds, bIds);
   return aIds === bIds;
 };
 
@@ -20,7 +19,6 @@ export const cartSlice = createSlice({
     addToCart: (state, action) => {
       const payload = action.payload;
       if (payload.type === "product") {
-        console.log(state.cartItems)
         const item = state.cartItems.find(
           (item) => item.type === "product" && item.id === payload.id
         );

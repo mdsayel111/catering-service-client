@@ -12,7 +12,7 @@ const Footer = async () => {
         <div className="self-center col-span-3 md:col-span-1  lg:col-span-2 w-auto mx-auto md:ml-0">
           <Logo
             className={"lg:w-full w-[60%] mx-auto"}
-            // src={footerData?.logo?.image}
+            src={"/images/logo-2.png"}
             image="darkImage"
           />
         </div>

@@ -39,10 +39,10 @@ export default function TopNavbar() {
 
   return (
     <div className="mx-auto w-full lg:pb-0 sticky top-0 z-50  bg-tertiary-color ">
-      <div className="max-w-7xl mx-auto px-4 py-4 lg:py-2 relative z-10 flex items-center justify-between ">
-        <Link href={"/"} className="block w-[150px]">
-          <Logo image="lightImage" className="" />
-        </Link>
+      <div className="max-w-7xl mx-auto px-4 py-4 lg:py-2 relative z-10 flex items-center justify-between">
+        <span className="block w-[150px]">
+          <Logo image="lightImage" src={"/images/logo-1.png"} />
+        </span>
 
         <nav className="items-center text-[15px] font-medium gap-6 justify-center hidden lg:flex ">
           {navItems.map((item, index) => (
