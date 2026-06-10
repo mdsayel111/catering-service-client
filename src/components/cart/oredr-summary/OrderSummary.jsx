@@ -21,11 +21,11 @@ export default function OrderSummary({
 }) {
   return (
     <div className={cn("mt-6 sm:mt-0 border h-fit rounded p-4 lg:sticky top-16", containerClassName)}>
-      <h2 className="text-lg font-bold text-gray-900 mb-4">Order Summary</h2>
+      <h2 className="text-lg font-bold text-gray-900 mb-4">অর্ডার বিবরণ</h2>
       <div className="space-y-3">
         <hr />
         <div className="flex justify-between items-center">
-          <p className="font-bold text-sm text-gray-500">TOTAL</p>
+          <p className="font-bold text-sm text-gray-500">মোট মূল্য</p>
           <p className="font-bold flex justify-center items-center gap-1"><TakaSymbol className={"w-2.5"} /> {total}</p>
         </div>
       </div>
