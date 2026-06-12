@@ -41,9 +41,6 @@ export default function ProductGroup({ item, selectedItems, setSelectedItems }) 
                 <p className="text-xs md:text-sm text-center text-text-primary-color mt-2 group-hover:text-secondary-color">
                   {product.title}
                 </p>
-                <p className="text-xs md:text-sm text-center text-text-primary-color mt-2 group-hover:text-secondary-color flex items-center justify-center gap-1">
-                  <TakaSymbol className={"w-2"} /> {" "} <span>{product.packagePrice}</span>
-                </p>
               </div>
             )
           })

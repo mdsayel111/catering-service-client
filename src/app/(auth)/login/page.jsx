@@ -40,13 +40,13 @@ export default function page() {
       <div class="max-w-[1500px] mx-auto grid grid-cols-1 lg:grid-cols-5 min-h-screen p-6 lg:p-10">
         <div class="lg:col-span-2 flex items-center">
           <div class="w-full max-w-md mx-auto">
-            <Logo className={"w-1/2 lg:w-1/2 mb-6"} />
+            <Logo className={"w-1/2 lg:w-1/2 mb-6"} src={"/images/logo-1.png"} />
 
             <h2 class="text-3xl font-bold mb-1">লগইন</h2>
             <p class="text-sm text-gray-500 mb-6">
               আপনার অ্যাকাউন্টে লগইন করুন
             </p>
-            <GoogleSigninButton />
+            {/* <GoogleSigninButton /> */}
 
             <div class="text-center text-gray-500 text-sm mb-6 relative">
               <span class="bg-[#f4f7f9] px-2 z-10 relative">

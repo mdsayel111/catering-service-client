@@ -58,7 +58,7 @@ export default function CartCard({
     : product?.image;
 
   const title = isPackage
-    ? `Package (${packageItems.length} items)`
+    ? packageItems?.map((item) => item.title).join(", ")
     : product?.title;
 
   const unitPrice = isPackage
@@ -70,15 +70,12 @@ export default function CartCard({
 
   const totalPrice = unitPrice * (item?.quantity || 1);
 
-  // =========================
-  // UI
-  // =========================
   return (
     <div className="mt-2 space-y-3">
       <div
         className={cn(
           "bg-white border rounded-md p-3 grid grid-cols-[40px_40%_1fr_1fr_1fr] md:grid-cols-6 items-center text-[10px] sm:text-xs md:text-sm",
-          !hasRemove ? "grid-cols-[40px_40%_1fr_1fr] md:grid-cols-[10%_1fr_1fr_1fr_1fr]" : "grid-cols-[40px_40%_1fr_1fr_1fr] md:grid-cols-6"
+          !hasRemove ? "grid-cols-[40px_40%_1fr_1fr] md:grid-cols-[10%_35%_1fr_1fr_1fr]" : "grid-cols-[40px_40%_1fr_1fr_1fr] md:grid-cols-[10%_35%_1fr_1fr_1fr_1fr]"
         )}
       >
         {/* IMAGE + TITLE */}
@@ -88,29 +85,12 @@ export default function CartCard({
             src={image}
             alt={title}
           />
-          {/* <div className="md:hidden">
-            <h4 className="font-semibold text-gray-700 leading-tight">
-              {title}
-            </h4>
-
-            {isPackage && (
-              <p className="text-[10px] text-gray-500">
-                {packageItems.length} products included
-              </p>
-            )}
-          </div> */}
         </div>
 
         <div>
           <h4 className="font-semibold text-gray-700 leading-tight">
             {title}
           </h4>
-
-          {isPackage && (
-            <p className="text-[10px] text-gray-500">
-              {packageItems.length} products included
-            </p>
-          )}
         </div>
 
 
@@ -165,6 +145,6 @@ export default function CartCard({
           </button>
         )}
       </div>
-    </div>
+    </div >
   );
 }

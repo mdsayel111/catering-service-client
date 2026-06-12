@@ -30,9 +30,6 @@ export default function Page() {
   const [deliveryAddress, setDeliveryAddress] = useState(null);
   const [finalCartItems, setFinalCartItems] = useState([]);
 
-  // =========================
-  // FETCH CART DETAILS
-  // =========================
   useEffect(() => {
     const getData = async () => {
       if (!cartItems.length) {
@@ -100,9 +97,6 @@ export default function Page() {
     getData();
   }, [cartItems]);
 
-  // =========================
-  // ORDER HANDLER
-  // =========================
   const handleOrderNow = async () => {
     if (!fullName || !phone || !deliveryAddress?.address) {
       return toast.error("দয়া করে সব তথ্য পূরণ করুন");
@@ -119,30 +113,33 @@ export default function Page() {
           long: deliveryAddress?.long,
           address: deliveryAddress?.address,
         },
+
+        // ✅ FIXED: products field (item instead of product)
         products: finalCartItems
-          .filter(i => i.type === "product")
-          .map(i => ({
-            product: i.item._id,
+          .filter((i) => i.type === "product")
+          .map((i) => ({
+            item: i.item._id,
             quantity: i.quantity,
           })),
+
+        // ✅ FIXED: packages must be array of arrays
         packages: finalCartItems
-          .filter(i => i.type === "package")
-          .map(i => ({
-            items: i.items.map(p => p._id),
-            quantity: i.quantity,
-          })),
-      }); F
+          .filter((i) => i.type === "package")
+          .map((i) => [
+            {
+              items: i.items.map((p) => p._id),
+              quantity: i.quantity,
+            },
+          ]),
+      });
 
       toast.success("অর্ডার সফলভাবে সম্পন্ন হয়েছে");
 
       dispatch(removeAllCartItems());
-
       router.push("/my-order");
     } catch (error) {
       console.log(error);
-      toast.error(
-        error?.response?.data?.message || "দুঃখিত, কিছু সমস্যা হয়েছে"
-      );
+      toast.error(error?.response?.data?.message || "দুঃখিত, কিছু সমস্যা হয়েছে");
     }
   };
 

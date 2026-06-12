@@ -7,6 +7,7 @@ import {
   FaTableColumns,
   FaTruck,
 } from "react-icons/fa6";
+import { MdCalendarMonth, MdMenuBook } from "react-icons/md";
 
 export const categories = [
   {
@@ -368,6 +369,16 @@ export const accountSideBarItems = [
     path: "/dashboard",
     label: "ড্যাশবোর্ড",
     icon: FaTableColumns,
+  },
+  {
+    path: "/today-menu",
+    label: "আজকের মেনু",
+    icon: MdCalendarMonth,
+  },
+  {
+    path: "/weekly-menu",
+    label: "সাপ্তাহিক মেনু",
+    icon: MdMenuBook,
   },
   // {
   //   path: "/purchase-history",

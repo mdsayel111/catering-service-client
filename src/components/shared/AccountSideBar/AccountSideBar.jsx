@@ -1,4 +1,3 @@
-import Link from "next/link";
 import AccountNavigationItems from "./components/account-navigation-items/AccountNavigationItems";
 
 export default function AccountSideBar() {

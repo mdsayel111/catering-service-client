@@ -6,7 +6,7 @@ export default function CartItems({ cartItems, loading, hasRemove = true, hasInc
     <div className="">
       {
         cartItems?.length > 0 ? <>
-          <div className={`py-3 md:py-4 px-3 md:px-6 border bg-[#fcfdfd] rounded text-[10px] sm:text-xs md:text-sm font-semibold text-gray-600 grid  items-center ${!hasRemove ? "grid-cols-[40px_40%_1fr_1fr] md:grid-cols-[10%_1fr_1fr_1fr_1fr]" : "grid-cols-[40px_40%_1fr_1fr_1fr] md:grid-cols-6"}`}>
+          <div className={`py-3 md:py-4 px-3 md:px-6 border bg-[#fcfdfd] rounded text-[10px] sm:text-xs md:text-sm font-semibold text-gray-600 grid  items-center ${!hasRemove ? "grid-cols-[40px_40%_1fr_1fr] md:grid-cols-[10%_35%_1fr_1fr_1fr]" : "grid-cols-[40px_40%_1fr_1fr_1fr] md:grid-cols-[10%_35%_1fr_1fr_1fr_1fr]"}`}>
             <h5 className="col-span-1">ছবি</h5>
             <h5 className="col-span-1">নাম</h5>
             <h5 className="text-center">মূল্য</h5>
